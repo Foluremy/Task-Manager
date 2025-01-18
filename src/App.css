@@ -1,0 +1,149 @@
+.app {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Container Styling */
+.container {
+  padding: 30px;
+  width: 400px;
+  background-color: teal;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+/* General input styling */
+.todo-input {
+  width: 70%;
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Input Placeholder styling */
+#todo-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* General button styling */
+.add-task-btn {
+  background-color: lavender; 
+  color: black; 
+  border: none; 
+  padding: 10px 20px; 
+  font-size: 15px; 
+  border-radius: 5px; 
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; 
+}
+
+/* Button Hover effect */
+.add-task-btn:hover {
+  background-color: coral; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-2px);
+}
+
+/* Button Active effect (on click) */
+.add-task-btn:active {
+  transform: scale(0.98); 
+  background-color: #3e8e41; 
+}
+
+/* Task list styles */
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.todo-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions h4 {
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative; /* For tooltip positioning */
+}
+
+/* Edit icon styles */
+.actions h4:first-child {
+  color: lavender; /* Color for edit (O) */
+}
+
+/* Delete icon styles */
+.actions h4:last-child {
+  color: red; /* Color for delete (X) */
+}
+
+.actions h4:hover {
+  color: darkgray;
+}
+
+/* Tooltip styles */
+.actions h4::after {
+  content: attr(data-tooltip); /* Use data-tooltip attribute for custom text */
+  position: absolute;
+  bottom: -30px; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0; /* Initially hidden */
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.actions h4:hover::after {
+  opacity: 1; /* Show tooltip on hover */
+}
+
+/* Editing styles */
+.edit-container {
+  display: flex;
+  align-items: center;
+}
+
+.edit-input {
+  margin-right: 10px;
+  padding: 5px;
+  width: 70%;
+}
+
+.save-edit-btn {
+  padding: 5px 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.save-edit-btn:hover {
+  background-color: darkgreen;
+}
