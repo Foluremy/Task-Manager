@@ -1,9 +1,10 @@
- import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [input,setInput] = useState("");
-  const [todos,setTodos] = useState([]);
+  // State variables
+  const [input,setInput] = useState(""); // For the task input field
+  const [todos,setTodos] = useState([]); // Array of tasks
   const [editIndex, setEditIndex] = useState(null); // Track index of task being edited
   const [editInput, setEditInput] = useState(""); // Input for the editing task
 
@@ -13,27 +14,27 @@ function App() {
     const storedTodos = localStorage.getItem("todos");
     if (storedTodos) {
       try {
-        const parsedTodos = JSON.parse(storedTodos);
+        const parsedTodos = JSON.parse(storedTodos); // Parse the string back to an array
         if (Array.isArray(parsedTodos)) {
-          setTodos(parsedTodos);
+          setTodos(parsedTodos);  // Set the tasks if data is valid
         }
       } catch (error) {
-        console.error("Error parsing todos:", error);
+        console.error("Error parsing todos:", error); // Handle parsing errors
       }
     }
-  }, []);
+  }, []); // Runs only once when the component is mounted
   
   
   // Save tasks to localStorage whenever `todos` changes
   useEffect(() => {
-    if (todos.length > 0) { 
+    if (todos.length > 0) {  // Avoid saving empty data initially
     console.log("Saving todos to localStorage:", todos);
     localStorage.setItem("todos", JSON.stringify(todos)); // Convert the array to a string
-  }}, [todos]);
+  }}, [todos]); // Runs whenever the `todos` array changes
 
-  // 
+  // Function to add a new task
   const addTodos = (input) => {
-    if (input.trim() === "") {
+    if (input.trim() === "") { // Prevent adding empty tasks
       alert("Task cannot be empty!"); 
       return;
     }
@@ -42,22 +43,23 @@ function App() {
   const formattedInput = input.charAt(0).toUpperCase() + input.slice(1);
 
   setTodos((prevTodos) => [...prevTodos, formattedInput]);
-  setInput(""); // Clear input field
+  setInput(""); // Clear the input field after adding the task
   };
 
-  //console.log(todos);
-
+  // Function to remove a task
   const removeTodo = (todo) => (
-    setTodos(todos.filter((x) => x !== todo))
+    setTodos(todos.filter((x) => x !== todo))  // Remove the selected task from the array
   )
 
+  // Function to start editing a task
   const startEditing = (index, todo) => {
     setEditIndex(index); // Set the index of the task being edited
     setEditInput(todo); // Set the initial value of the edit input
   };
 
+  // Function to save the edited task
   const saveEdit = (index) => {
-    if (editInput.trim() === "") {
+    if (editInput.trim() === "") {  // Prevent saving an empty task
       alert("Task cannot be empty!");
       return;
     }
@@ -65,12 +67,12 @@ function App() {
     // Capitalize the first letter of the first word for the edited task
     const formattedEdit = editInput.charAt(0).toUpperCase() + editInput.slice(1);
   
+    // Update the task at the given index
     const updatedTodos = todos.map((todo, i) => (i === index ? formattedEdit : todo));
     setTodos(updatedTodos);
-    setEditIndex(null);
-    setEditInput("");
-  };
-  
+    setEditIndex(null); // Exit editing mode
+    setEditInput(""); // Clear the edit input
+  };  
 
   return (
     <div className="app">
@@ -115,6 +117,7 @@ function App() {
               </div>
             ))
           ) : (
+            // Message to display if there are no tasks
             <p>No tasks yet!</p>
           )}
         </div>
