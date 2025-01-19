@@ -3,7 +3,7 @@ A simple and efficient task management web application built with React.
 
 ## Description
 
-Task Manager is a lightweight and intuitive web application designed to help you manage your tasks and to-do lists with ease. With a clean and minimalistic interface, you can quickly add, edit, and delete tasks, as well as mark them as completed.
+Task Manager is a lightweight and intuitive web application designed to help you manage your tasks and to-do lists with ease. With a clean and minimalistic interface, you can quickly add, edit, and delete tasks.
 
 ## Features
 
